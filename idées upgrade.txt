@@ -1,0 +1,16 @@
+bugs actuels :
+les sons mais ça on verra XD (y a moyen avec une commande de récup des connectés avec leurs ID (requête au serveur quand j'aurai fait les commandes pour lui)
+avec choix du destinataire, à voir peut-être à partir de la fenêrte popup
+rajouter : et les chiffres au cryptage ou *l'enlever pour l'instant
+des commandes côté serveur (trouver nouvelles commandes)
+
+/disconnect :
+serveur : envoie "kill[idClient]"
+clients : reçoivent "kill[idClient]" et l'ignorent si idClient != le leur  (fait)
+client concerné : se fait rekt XD
+
+système de vote  :
+serveur lance une procédure de vote (/vote)
+clients répondent par X ou O et compte des croix quand tout le monde a voté
+
+condition validation texte : if(enter  || (mousePressed&&!clic dans le rect concerné) (fait)
