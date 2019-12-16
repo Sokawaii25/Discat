@@ -1,0 +1,7 @@
+faire une documentation (en cours)
+passer le code sur GitHub (fait)
+virer les trucs japonais
+virer le test des adresses IP coté client (fait)
+renommer serveur en  (fait ...)
+vérifier que un champs de texte non validé l'est quand on se connecte (vérifié)
+recheck les commandes du client : /quit, /exit, /clear (fait)
