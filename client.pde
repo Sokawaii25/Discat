@@ -1,11 +1,13 @@
 void sendingclient() {
   if (keyCode==ENTER) {
     decalage = 0;
-    for (int i = 0; i< input.length()-1; i+=129) {
-      input = input.substring(0, i) + input.substring(i+1);
+    if (input.length()>=130) {
+      for (int i = 130; i < input.length()-1; i+=130) {
+        input = input.substring(0, i) + input.substring(i+1);
+      }
     }
     switch(input) {
-      case("quit"):
+      case("/quit"):
       deroulement.clear();
       for (int x = 0; x < 11; x+=1) {
         deroulement.append("");
@@ -14,11 +16,18 @@ void sendingclient() {
       chat = false;
       nomclient = false;
       nomserveur = false;
+      c.stop();
       break;
-      case ("exit"):
+      case ("/exit"):
       c.write(idClient+"quit");
       c.stop();
       exit();
+      break;
+      case ("/clear") :
+      deroulement.clear();
+      for (int x = 0; x < 11; x+=1) {
+        deroulement.append("");
+      }
       break;
       case ("$*1") :
       c.write(input);
@@ -142,7 +151,7 @@ void identification() {
   noStroke();
 
   //ip du destinataire
-  text("IP du serveur cible :", width/2, 250);
+  text("IP du host cible :", width/2, 250);
   if (choix==2) {
     stroke(250, 50, 50);
   }
@@ -169,7 +178,7 @@ void identification() {
   noStroke();
 
   //port cible
-  text("port du serveur cible :", width/2, 350);
+  text("port du host cible :", width/2, 350);
   if (choix==3) {
     stroke(250, 50, 50);
   }
@@ -193,7 +202,11 @@ void identification() {
   } else {
     text(port, width/2, 390);
   }
-  noStroke();
+
+  if (noHost) {
+    fill(255, 0, 0);
+    text("Aucun host n'a été trouvé à cette adresse, veuillez réessayer ...", width/2, 450);
+  }
 
   if (mouseX>390&&mouseX<690&&mouseY>170&&mouseY<200) {
     if (mousePressed) {
@@ -230,7 +243,7 @@ void identification() {
   fill(50, 200, 50);
   rect(150, 50, 200, 50, 25);
   fill(255);
-  text("Passer en mode \n \n serveur", 150, 45);
+  text("Passer en mode \n \n host", 150, 45);
   noStroke();
   if (mousePressed&&mouseX>48&&mouseX<253&&mouseY>24&&mouseY<77&&anti_spam_profil) {
     profil = 0;
@@ -242,12 +255,21 @@ void identification() {
   rect(width/2, 530, 200, 60, 10);
   fill(255);
   text("Se connecter", width/2, 535);
+
   if (mousePressed&&mouseX>440&&mouseX<640&&mouseY>500&&mouseY<560) {
-    chat=true;
-    parametres[0] = pseudoclient;
-    parametres[1] = ip;
-    parametres[2] = str(port);
-    saveStrings("data/parametres_client.txt", parametres);
-    antiboucle = false;
+    c = new Client(this, ip, port);
+    if (c.active()) {
+      antiboucle = false;
+      chat=true;
+      parametres[0] = pseudoclient;
+      parametres[1] = ip;
+      parametres[2] = str(port);
+      saveStrings("data/parametres_client.txt", parametres);
+      c.write(pseudoclient);
+      noHost = false;
+    } else {
+      c.stop();
+      noHost = true;
+    }
   }
 }

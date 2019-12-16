@@ -6,7 +6,7 @@ Server s;
 Client c;
 String recup, pseudoclient, pseudoserveur, ip, message;
 int decalage, clients, port, choix, profil, over, idClient, clientState;
-boolean chat, antiboucle, nomclient, nomserveur, anti_spam_son, anti_spam_profil;
+boolean chat, antiboucle, nomclient, nomserveur, anti_spam_son, anti_spam_profil, noHost;
 char cle;
 StringList deroulement, pseudoclients;
 String[] parametres;
@@ -46,7 +46,7 @@ void setup() {
 }
 
 void draw() {
-  println(mouseX, mouseY);
+  //println(mouseX, mouseY);
   background(0);
   if (!chat) {
     if (profil==0) {
@@ -58,21 +58,7 @@ void draw() {
     if (!antiboucle) {
       background(0);
       noStroke();
-      if (profil==0) {
-        s = new Server(this, port);
-      } else {
-        do
-        {
-          c = new Client(this, ip, port);
-          ip = incrementIP(ip);
-        }
-        while (!c.active());
-        c.write(pseudoclient);
-      }
       antiboucle=true;
-    }
-    if (profil==0) {
-      c = s.available();
     }
 
     textFont(text);
@@ -84,18 +70,18 @@ void draw() {
     fill(255);
     textAlign(CENTER);
     if (profil==0) {
-      text("Ohayo gosaimasu "+pseudoserveur+" !!!", width/2, 50);
+      text("Hello "+pseudoserveur+" !!!", width/2, 50);
       textSize(15);
       text(clients+" connecté au serveur "+s.ip(), width/2, 70);
     } else {
-      text("Ohayo gosaimasu "+pseudoclient+" !!!", width/2, 50);
+      text("Hello "+pseudoclient+" !!!", width/2, 50);
       textSize(15);
       text("Vous êtes connecté avec "+pseudoserveur, width/2, 70);
     }
 
     if (profil==0) {
-      sendingserver();
-      receivingserver();
+      sendinghost();
+      receivinghost();
     } else {
       sendingclient();
       receivingclient();
@@ -103,9 +89,9 @@ void draw() {
     afficheText();
 
     //repères graphiques pour les sons
-    image(fuck, width-80, height-240, 65, 65);
+    /*image(fuck, width-80, height-240, 65, 65);
     image(tuturu, width-80, height-160, 65, 65); //régler le x en height-80 et recalculer la hauteyr 
-    image(nico, width-80, height-80, 65, 65);
+    image(nico, width-80, height-80, 65, 65);*/
 
     input();  //fonction d'entrée texte   
 
