@@ -135,7 +135,6 @@ void identification() {
   rect(width/2, 185, 300, 30, 10);
   fill(255);
   if (choix==1) {
-    stroke(250, 50, 50);
     input();
     text(input, width/2, 190);
     if (keyCode==ENTER || (mousePressed && !(mouseX>390&&mouseX<690&&mouseY>170&&mouseY<200))) {
