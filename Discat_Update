@@ -1,0 +1,43 @@
+#!/bin/bash
+
+update() {
+    if [ ! -d ~/Documents/Discat ]; then
+	mkdir ~/Documents/Discat
+	touch ~/Documents/Discat/version.txt
+	echo '1.0' > ~/Documents/Discat/version.txt
+    fi
+
+    versionClient=`cat ~/Documents/Discat/version.txt`
+    versionServer=`cat ~ahornec/Partage/Upload/Discat/version.txt`
+
+    if [ $versionClient -eq $versionServer ]; then
+	echo 'Vous avez déjà la dernière version du Discat, des mises à jour sont probablement en cours de préparation, merci pour votre patience !'
+    else
+	echo 'Compression en cours'
+	tar -czf ~ahornec/Partage/Upload/Discat.tar.gz ~ahornec/Partage/Upload/Discat/application.linux64/*
+	echo 'Importation en cours'
+	mv ~ahornec/Partage/Upload/Discat.tar.gz ~/Documents/Discat/Discat.tar.gz
+	echo 'Décompression en cours'
+	tar -zxf ~/Documents/Discat/Discat.tar.gz
+	rm ~/Documents/Discat/Discat.tar.gz
+	ln -s ~/Documents/Discat/Discat ~/Desktop/Discat
+	echo 'Mise à jour effectuée !'
+    fi 
+
+    echo $versionServer > ~/Documents/Discat/version.txt
+}
+
+echo 'Voulez-vous désinstaller définitivement Discat ("uninstall"), ou le mettre à jour ("update")? '
+read choice
+
+case $choice in
+    'uninstall') if [ -d ~/Documents/Discat ]; then 
+	    echo 'Désinstallation en cours ... merci quand même d"'"avoir pris le temps de l"'"essayer !'
+	    rm -rf ~/Documents/Discat
+	    rm ~/Desktop/Discat
+            echo 'Désinstallation terminée'
+	else
+	    echo 'L"application est déjà désinstallée'
+	fi ;;
+    'update') update ;;
+esac
