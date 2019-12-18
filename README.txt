@@ -3,7 +3,7 @@ A LAN chatting app
 
 This app allows you to chat with other people in a LAN
 
-L'appli possède 2 modes : hôte (pour l'instant nommé serveur) et client
+L'appli possède 2 modes : hôte et client
 L'écran d'accueil permet de choisir le mode de connexion. Pour l'hôte, il faut renseigner un pseudo et le port à utiliser (1111 par défaut et il n'est pas nécessaire de le modifier, pensez à le communiquer à vos clients si vous le modifiez). Pour le client, il faut en plus l'adresse IP de l'hôte à qui vous voulez vous connecter (elle est affichée sur l'interface de l'hôte).
 
 -L'hôte est celui qui gère la conversation, il a accès à certaines commandes :
