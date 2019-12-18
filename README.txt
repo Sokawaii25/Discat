@@ -17,4 +17,4 @@ L'écran d'accueil permet de choisir le mode de connexion. Pour l'hôte, il faut
       -/help : liste les commandes disponibles
 -Le client a aussi accès aux commandes /quit, /exit et /clear.
 
-Pour le report de bugs, vous pouvez le faire sur discord (_______#8186) ou par mail à ahornec@univ-pau.fr. Sur ce, je vous souhaite d'excellentes discussions pendant les cours de Chakib sur le Discat ;) !
+Pour le report de bugs, vous pouvez le faire sur discord (そかわいい ^^#8186) ou par mail à ahornec@univ-pau.fr. Sur ce, je vous souhaite d'excellentes discussions pendant les cours de Chakib sur le Discat ;) !
