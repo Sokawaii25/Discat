@@ -100,7 +100,7 @@ void draw() {
     rect(45, height-50-19*decalage, 940, 30+decalage*19, 10);
     textAlign(LEFT, BASELINE);
     fill(255);
-    text(input, 60, height-30-19*decalage);
+    text(input+'|', 60, height-30-19*decalage);
 
     if (mousePressed&&anti_spam_son) {
       son();

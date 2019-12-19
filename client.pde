@@ -136,7 +136,7 @@ void identification() {
   fill(255);
   if (choix==1) {
     input();
-    text(input, width/2, 190);
+    text(input+'|', width/2, 190);
     if (keyCode==ENTER || (mousePressed && !(mouseX>390&&mouseX<690&&mouseY>170&&mouseY<200))) {
       pseudoclient=input;
       text(pseudoclient, width/2, 190);
@@ -163,7 +163,7 @@ void identification() {
   fill(255);
   if (choix==2) {
     input();
-    text(input, width/2, 290);
+    text(input+'|', width/2, 290);
     if (keyCode==ENTER || (mousePressed && !(mouseX>390&&mouseX<690&&mouseY>270&&mouseY<300))) {
       ip=input;
       text(ip, width/2, 290);
@@ -190,7 +190,7 @@ void identification() {
   fill(255);
   if (choix==3) {
     input();
-    text(input, width/2, 390);
+    text(input+'|', width/2, 390);
     if (keyCode==ENTER || (mousePressed && !(mouseX>390&&mouseX<690&&mouseY>370&&mouseY<400))) {
       port=int(input);
       text(port, width/2, 390);

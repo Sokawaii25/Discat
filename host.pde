@@ -99,7 +99,7 @@ void parametres() {
   fill(255);
   if (choix==1) {
     input();
-    text(input, width/2, 190);
+    text(input+'|', width/2, 190);
     if (keyCode==ENTER || (mousePressed && !(mouseX>390&&mouseX<690&&mouseY>170&&mouseY<200))) {
       pseudoserveur=input;
       text(pseudoserveur, width/2, 190);
@@ -126,7 +126,7 @@ void parametres() {
   fill(255);
   if (choix==2) {
     input();
-    text(input, width/2, 290);
+    text(input+'|', width/2, 290);
     if (keyCode==ENTER || (mousePressed && !(mouseX>390&&mouseX<690&&mouseY>270&&mouseY<300))) {
       port=int(input);
       text(port, width/2, 290);
