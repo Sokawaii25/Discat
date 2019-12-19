@@ -13,6 +13,8 @@ update() {
     if [ $versionClient -eq $versionServer ]; then
 	echo 'Vous avez déjà la dernière version du Discat, des mises à jour sont probablement en cours de préparation, merci pour votre patience !'
     else
+	echo "Suppression de l'ancienne version du Discat en cours"
+	rm -r ~/Documents/Discat/*
 	echo 'Compression en cours'
 	tar -czf ~ahornec/Partage/Upload/Discat.tar.gz ~ahornec/Partage/Upload/Discat/application.linux64/*
 	echo 'Importation en cours'
@@ -22,9 +24,9 @@ update() {
 	rm ~/Documents/Discat/Discat.tar.gz
 	ln -s ~/Documents/Discat/Discat ~/Desktop/Discat
 	echo 'Mise à jour effectuée !'
-    fi 
-
-    echo $versionServer > ~/Documents/Discat/version.txt
+	datedl=$(date +%D)" à "$(date +%T)
+	echo "$LOGNAME - le $datedl" >> ~/Partage/Upload/.updates
+    fi
 }
 
 echo 'Voulez-vous désinstaller définitivement Discat ("uninstall"), ou le mettre à jour ("update")? '
